@@ -1,6 +1,6 @@
 import 'package:app/components/default_button.dart';
 import 'package:app/components/text_form_field.dart';
-import 'package:app/pages/page.dart';
+import 'package:app/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
