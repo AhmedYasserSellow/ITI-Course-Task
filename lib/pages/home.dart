@@ -15,6 +15,7 @@ class _NewPageState extends State<NewPage> {
   Future getEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     email = prefs.getString('email');
+    setState(() {});
   }
 
   String? email;
