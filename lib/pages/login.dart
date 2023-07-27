@@ -2,6 +2,7 @@ import 'package:app/components/default_button.dart';
 import 'package:app/components/text_form_field.dart';
 import 'package:app/pages/home.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -79,15 +80,18 @@ class LoginPage extends StatelessWidget {
                   height: 20,
                 ),
                 defaultButton(
-                  onTap: () {
+                  onTap: () async {
                     if (formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => NewPage(
-                                  email: controller.text,
-                                )),
-                      );
+                      final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('email', controller.text);
+                      if (context.mounted) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewPage()),
+                        );
+                      }
                     }
                   },
                   text: 'Login',
