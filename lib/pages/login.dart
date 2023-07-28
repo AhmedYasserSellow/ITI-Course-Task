@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
                   height: 150,
                 ),
                 Image.asset(
-                  'assets/logo1.png',
+                  'assets/logo.png',
                   width: 350,
                 ),
                 const SizedBox(
@@ -86,11 +86,7 @@ class LoginPage extends StatelessWidget {
                           await SharedPreferences.getInstance();
                       prefs.setString('email', controller.text);
                       if (context.mounted) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const NewPage()),
-                        );
+                        Navigator.pushNamed(context, HomePage.id);
                       }
                     }
                   },

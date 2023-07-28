@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class NewPage extends StatefulWidget {
-  const NewPage({
+class HomePage extends StatefulWidget {
+  const HomePage({
     super.key,
   });
-  static String id = 'Home';
+  static String id = 'HomePage';
 
   @override
-  State<NewPage> createState() => _NewPageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _NewPageState extends State<NewPage> {
+class _HomePageState extends State<HomePage> {
   Future getEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    email = prefs.getString('email');
+    email = prefs.getString('email')!;
     setState(() {});
   }
 
