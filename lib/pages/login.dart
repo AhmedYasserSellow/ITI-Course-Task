@@ -7,8 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   static String id = 'LoginPage';
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _controller = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
-            key: _formKey,
+            key: formKey,
             child: Column(
               children: [
                 const SizedBox(
@@ -30,7 +30,7 @@ class LoginPage extends StatelessWidget {
                   height: 60,
                 ),
                 myTextFormField(
-                  controller: _controller,
+                  controller: controller,
                   validate: (String? value) {
                     if (value!.isEmpty || !value.contains('@')) {
                       return "enter a valid e-mail";
@@ -81,10 +81,10 @@ class LoginPage extends StatelessWidget {
                 ),
                 defaultButton(
                   onTap: () async {
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       final SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      prefs.setString('email', _controller.text);
+                      prefs.setString('email', controller.text);
                       if (context.mounted) {
                         Navigator.pushNamed(context, HomePage.id);
                       }
