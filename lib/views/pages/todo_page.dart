@@ -25,6 +25,17 @@ class _TodoPageState extends State<TodoPage> {
             appBar: AppBar(
               title: const Text('Todo List'),
               centerTitle: true,
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: Center(
+                    child: Text(
+                      todo.length.toString(),
+                      style: const TextStyle(fontSize: 18),
+                    ),
+                  ),
+                )
+              ],
             ),
             body: todo.isEmpty
                 ? const Center(
