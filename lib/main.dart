@@ -1,3 +1,4 @@
+import 'package:app/views/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 
 import 'views/pages/home.dart';
@@ -16,8 +17,9 @@ class MyApp extends StatelessWidget {
       routes: {
         LoginPage.id: (context) => LoginPage(),
         HomePage.id: (context) => const HomePage(),
+        TodoPage.id: (context) => const TodoPage(),
       },
-      initialRoute: LoginPage.id,
+      initialRoute: TodoPage.id,
       debugShowCheckedModeBanner: false,
     );
   }
