@@ -18,8 +18,8 @@ class _TodoPageState extends State<TodoPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: Stream.fromFuture(getList()),
+    return FutureBuilder(
+        future: getList(),
         builder: (context, snapshot) {
           return Scaffold(
             appBar: AppBar(
