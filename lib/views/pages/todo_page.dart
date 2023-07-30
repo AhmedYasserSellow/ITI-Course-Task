@@ -47,7 +47,7 @@ class _TodoPageState extends State<TodoPage> {
                       itemBuilder: (context, index) {
                         return ListTile(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16)),
+                              borderRadius: BorderRadius.circular(8)),
                           iconColor: todo[index].completed!
                               ? const Color.fromRGBO(76, 175, 80, 1)
                               : const Color.fromRGBO(244, 67, 54, 1),
@@ -61,8 +61,8 @@ class _TodoPageState extends State<TodoPage> {
                           ),
                           title: Text(todo[index].title!),
                           subtitle: Text(todo[index].completed!
-                              ? 'Task is Completed'
-                              : "Task isn't completed"),
+                              ? '\nask is Completed'
+                              : "\nTask isn't completed"),
                         );
                       },
                       itemCount: todo.length,
