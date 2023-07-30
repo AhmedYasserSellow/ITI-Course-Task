@@ -15,9 +15,10 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final TextEditingController controller = TextEditingController();
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  IconData obsecureIcon = Icons.visibility_off;
+  bool isHidden = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 60,
                 ),
                 myTextFormField(
-                  controller: controller,
+                  controller: emailController,
                   validate: (String? value) {
                     if (value!.isEmpty || !value.contains('@')) {
                       return "enter a valid e-mail";
@@ -62,6 +63,8 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 myTextFormField(
+                  controller: passwordController,
+                  isHidden: isHidden,
                   validate: (String? value) {
                     if (value!.isEmpty || value.length < 8) {
                       return 'passwword is too short';
@@ -73,8 +76,17 @@ class _LoginPageState extends State<LoginPage> {
                   context: context,
                   color: Colors.black,
                   suffix: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.visibility),
+                    color: Colors.grey,
+                    onPressed: () {
+                      if (isHidden) {
+                        obsecureIcon = Icons.visibility;
+                      } else {
+                        obsecureIcon = Icons.visibility_off;
+                      }
+                      isHidden = !isHidden;
+                      setState(() {});
+                    },
+                    icon: Icon(obsecureIcon),
                   ),
                 ),
                 const SizedBox(
@@ -100,8 +112,10 @@ class _LoginPageState extends State<LoginPage> {
                     if (formKey.currentState!.validate()) {
                       final SharedPreferences prefs =
                           await SharedPreferences.getInstance();
-                      prefs.setString('email', controller.text);
+                      prefs.setString('email', emailController.text);
                       if (context.mounted) {
+                        emailController.clear();
+                        passwordController.clear();
                         Navigator.pushNamed(context, EmailPage.id);
                       }
                     }
@@ -113,7 +127,13 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 defaultButton(
-                  onTap: () {},
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Feature is not available right now'),
+                      ),
+                    );
+                  },
                   text: 'No Account ? Sign Up',
                   color: Colors.grey,
                 )
