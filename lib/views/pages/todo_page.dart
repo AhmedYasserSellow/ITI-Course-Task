@@ -49,10 +49,10 @@ class _TodoPageState extends State<TodoPage> {
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16)),
                           iconColor: todo[index].completed!
-                              ? Colors.green
-                              : Colors.red,
+                              ? const Color.fromRGBO(76, 175, 80, 1)
+                              : const Color.fromRGBO(244, 67, 54, 1),
                           textColor: Colors.white,
-                          tileColor: const Color(0xff545454),
+                          tileColor: const Color(0xff16202a),
                           leading: Icon(
                             todo[index].completed!
                                 ? Icons.check_circle_outline
