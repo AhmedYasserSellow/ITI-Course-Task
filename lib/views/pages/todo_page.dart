@@ -13,7 +13,6 @@ class _TodoPageState extends State<TodoPage> {
   List<TodoModel> todo = [];
   Future getList() async {
     todo = await TODOService().getTODOService();
-    setState(() {});
   }
 
   @override

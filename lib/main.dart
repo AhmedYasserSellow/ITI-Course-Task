@@ -1,8 +1,9 @@
+import 'package:app/views/pages/home_page.dart';
 import 'package:app/views/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 
-import 'views/pages/home.dart';
-import 'views/pages/login.dart';
+import 'views/pages/email_page.dart';
+import 'views/pages/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,12 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.black,
+      )),
       routes: {
-        LoginPage.id: (context) => LoginPage(),
-        HomePage.id: (context) => const HomePage(),
+        LoginPage.id: (context) => const LoginPage(),
+        EmailPage.id: (context) => const EmailPage(),
         TodoPage.id: (context) => const TodoPage(),
+        HomePage.id: (context) => const HomePage(),
       },
-      initialRoute: TodoPage.id,
+      initialRoute: HomePage.id,
       debugShowCheckedModeBanner: false,
     );
   }

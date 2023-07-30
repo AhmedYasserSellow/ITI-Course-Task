@@ -3,13 +3,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../components/default_button.dart';
 import '../components/text_form_field.dart';
-import 'home.dart';
+import 'email_page.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
   static String id = 'LoginPage';
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +95,7 @@ class LoginPage extends StatelessWidget {
                           await SharedPreferences.getInstance();
                       prefs.setString('email', controller.text);
                       if (context.mounted) {
-                        Navigator.pushNamed(context, HomePage.id);
+                        Navigator.pushNamed(context, EmailPage.id);
                       }
                     }
                   },
