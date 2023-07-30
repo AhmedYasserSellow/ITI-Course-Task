@@ -6,7 +6,9 @@ Widget menuCard({
   required String image,
   required VoidCallback onTap,
   required String label,
+  required VoidCallback detailsButtonOnTap,
   String buttonLabel = 'Go There',
+  String detailsbuttonLable = 'Task Details',
   Color textColor = Colors.black,
   double height = 100,
   double width = 150,
@@ -33,7 +35,19 @@ Widget menuCard({
         width: 20,
       ),
       Expanded(
-          child: defaultButton(onTap: onTap, text: buttonLabel, color: color))
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          defaultButton(onTap: onTap, text: buttonLabel, color: color),
+          const SizedBox(
+            height: 20,
+          ),
+          defaultButton(
+              onTap: detailsButtonOnTap,
+              text: detailsbuttonLable,
+              color: color),
+        ],
+      ))
     ],
   );
 }

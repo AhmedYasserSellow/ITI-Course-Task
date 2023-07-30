@@ -1,3 +1,4 @@
+import 'package:app/views/components/details_dialog.dart';
 import 'package:app/views/components/menu_card.dart';
 import 'package:app/views/pages/login_page.dart';
 import 'package:app/views/pages/todo_page.dart';
@@ -30,6 +31,18 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pushNamed(context, LoginPage.id);
               },
+              detailsButtonOnTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return detailsDialog(
+                        context: context,
+                        title: 'Login Page',
+                        subtitle:
+                            '1- Make a login Page with validators\n2-Navigate to another page\n3- Send email used to login to the same page');
+                  },
+                );
+              },
             ),
             const SizedBox(
               height: 20,
@@ -47,6 +60,18 @@ class _HomePageState extends State<HomePage> {
                 image: 'assets/api.png',
                 onTap: () {
                   Navigator.pushNamed(context, TodoPage.id);
+                },
+                detailsButtonOnTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return detailsDialog(
+                          context: context,
+                          title: 'Todo List Page',
+                          subtitle:
+                              '1- Make todo list model\n2- Make todo list service\n3- Get todo list from api and display it\n4- Make circular progress indicator if todo list is empty');
+                    },
+                  );
                 }),
             const SizedBox(
               height: 20,
