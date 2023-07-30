@@ -38,7 +38,11 @@ Widget menuCard({
           child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          defaultButton(onTap: onTap, text: buttonLabel, color: color),
+          defaultButton(
+            onTap: onTap,
+            text: buttonLabel,
+            color: color,
+          ),
           const SizedBox(
             height: 20,
           ),
