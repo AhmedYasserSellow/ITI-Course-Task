@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           appBarTheme: const AppBarTheme(
-        backgroundColor: Color.fromRGBO(0, 0, 0, 0.541),
+        backgroundColor: Color(0xFF545454),
       )),
       routes: {
         LoginPage.id: (context) => const LoginPage(),

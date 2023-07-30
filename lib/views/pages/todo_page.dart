@@ -40,13 +40,38 @@ class _TodoPageState extends State<TodoPage> {
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
-                : ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(todo[index].title!),
-                      );
-                    },
-                    itemCount: todo.length,
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 10),
+                    child: ListView.separated(
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16)),
+                          iconColor: todo[index].completed!
+                              ? Colors.green
+                              : Colors.red,
+                          textColor: Colors.white,
+                          tileColor: const Color(0xff545454),
+                          leading: Icon(
+                            todo[index].completed!
+                                ? Icons.check_circle_outline
+                                : Icons.dangerous_outlined,
+                            size: 40,
+                          ),
+                          title: Text(todo[index].title!),
+                          subtitle: Text(todo[index].completed!
+                              ? 'Task is Completed'
+                              : "Task isn't completed"),
+                        );
+                      },
+                      itemCount: todo.length,
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(
+                          height: 10,
+                        );
+                      },
+                    ),
                   ),
           );
         });
