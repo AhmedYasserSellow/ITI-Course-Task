@@ -21,6 +21,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: const BackButton(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -29,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 150,
+                  height: 75,
                 ),
                 Image.asset(
                   'assets/logo.png',
