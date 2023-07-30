@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                           context: context,
                           title: 'Todo List Page',
                           subtitle:
-                              '1- Make todo list model\n2- Make todo list service\n3- Get todo list from api and display it\n4- Make circular progress indicator if todo list is empty');
+                              '1- Make todo list model\n2- Make todo list service\n3- Get todo list from api and display it\n4- Make circular progress indicator if todo list is empty\n5- Refactor code using bloc package');
                     },
                   );
                 }),

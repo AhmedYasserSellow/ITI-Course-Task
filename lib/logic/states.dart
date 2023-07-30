@@ -1,9 +1,9 @@
-abstract class AppStates {}
+abstract class TodoStates {}
 
-class AppIntialState extends AppStates {}
+class AppIntialState extends TodoStates {}
 
-class TodoPageIsLoading extends AppStates {}
+class TodoPageIsLoading extends TodoStates {}
 
-class TodoPageIsSuccessful extends AppStates {}
+class TodoPageIsSuccessful extends TodoStates {}
 
-class TodoPageError extends AppStates {}
+class TodoPageError extends TodoStates {}

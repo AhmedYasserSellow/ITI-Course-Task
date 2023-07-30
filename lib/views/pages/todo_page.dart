@@ -13,7 +13,7 @@ class TodoPage extends StatelessWidget {
         create: (context) {
           return TodoCubit()..getList();
         },
-        child: BlocConsumer<TodoCubit, AppStates>(
+        child: BlocConsumer<TodoCubit, TodoStates>(
             listener: (context, state) {},
             builder: (context, state) {
               return Scaffold(
@@ -60,11 +60,8 @@ class TodoPage extends StatelessWidget {
                                     ),
                                     title: Text(
                                         todoCubit(context).todo[index].title!),
-                                    subtitle: Text(todoCubit(context)
-                                            .todo[index]
-                                            .completed!
-                                        ? '\nask is Completed'
-                                        : "\nTask isn't completed"),
+                                    subtitle: Text(
+                                        '\nTask ID : ${todoCubit(context).todo[index].id}\nUser ID : ${todoCubit(context).todo[index].userId}'),
                                   );
                                 },
                                 itemCount: todoCubit(context).todo.length,

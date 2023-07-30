@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 todoCubit(context) => TodoCubit.get(context);
 
-class TodoCubit extends Cubit<AppStates> {
+class TodoCubit extends Cubit<TodoStates> {
   TodoCubit() : super(AppIntialState());
 
   static TodoCubit get(context) => BlocProvider.of(context);
