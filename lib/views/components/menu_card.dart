@@ -43,9 +43,10 @@ Widget menuCard({
             height: 20,
           ),
           defaultButton(
-              onTap: detailsButtonOnTap,
-              text: detailsbuttonLable,
-              color: color),
+            onTap: detailsButtonOnTap,
+            text: detailsbuttonLable,
+            color: color,
+          ),
         ],
       ))
     ],
