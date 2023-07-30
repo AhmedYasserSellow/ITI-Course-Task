@@ -7,7 +7,7 @@ Widget menuCard({
   required VoidCallback onTap,
   required String label,
   required VoidCallback detailsButtonOnTap,
-  String buttonLabel = 'Go There',
+  String buttonLabel = 'Open Task',
   String detailsbuttonLable = 'Task Details',
   Color textColor = Colors.black,
   double height = 100,
