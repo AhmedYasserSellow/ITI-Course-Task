@@ -1,3 +1,5 @@
+import 'package:app/views/pages/register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -110,13 +112,34 @@ class _LoginPageState extends State<LoginPage> {
                 defaultButton(
                   onTap: () async {
                     if (formKey.currentState!.validate()) {
-                      final SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setString('email', emailController.text);
-                      if (context.mounted) {
-                        emailController.clear();
-                        passwordController.clear();
-                        Navigator.pushNamed(context, EmailPage.id);
+                      try {
+                        final SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setString('email', emailController.text);
+                        await FirebaseAuth.instance.signInWithEmailAndPassword(
+                          email: emailController.text,
+                          password: passwordController.text,
+                        );
+                        if (context.mounted) {
+                          emailController.clear();
+                          passwordController.clear();
+                          Navigator.pushNamed(context, EmailPage.id);
+                        }
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'user-not-found') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content:
+                                      Text('No user found for that email')));
+                        } else if (e.code == 'wrong-password') {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      'Wrong password provided for that user')));
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Login failed')));
+                        }
                       }
                     }
                   },
@@ -128,11 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 defaultButton(
                   onTap: () {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Feature is not available right now'),
-                      ),
-                    );
+                    Navigator.pushReplacementNamed(context, RegisterPage.id);
                   },
                   text: 'No Account ? Sign Up',
                   color: Colors.grey,
