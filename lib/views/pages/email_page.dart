@@ -35,6 +35,7 @@ class _EmailPageState extends State<EmailPage> {
       body: Center(
         child: Text(
           'your email is : $email',
+          textAlign: TextAlign.center,
           style: const TextStyle(fontSize: 24),
         ),
       ),
