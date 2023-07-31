@@ -94,14 +94,32 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Forgot Password ? '),
-                    Text(
-                      'Tap Me',
-                      style: TextStyle(
-                        color: Colors.blue,
+                    const Text('Forgot Password ? '),
+                    InkWell(
+                      onTap: () async {
+                        try {
+                          await FirebaseAuth.instance.sendPasswordResetEmail(
+                              email: emailController.text);
+                          if (context.mounted) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content:
+                                        Text('message sent to your email')));
+                          }
+                        } on FirebaseAuthException {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text('enter a valid email')));
+                        }
+                      },
+                      child: const Text(
+                        'Tap Me',
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ],
