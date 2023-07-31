@@ -22,44 +22,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-        child: Column(
-          children: [
-            menuCard(
-              color: const Color(0xffb4763c),
-              label: 'Login Page',
-              image: 'assets/login.png',
-              onTap: () {
-                Navigator.pushNamed(context, LoginPage.id);
-              },
-              detailsButtonOnTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) {
-                    return detailsDialog(
-                        context: context,
-                        title: 'Login Page',
-                        subtitle:
-                            '1- Make a login Page with validators\n2-Navigate to another page\n3- Send email used to login to the same page\n4- Add firebase auth to project');
-                  },
-                );
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              height: 10,
-              thickness: 2,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            menuCard(
-                color: const Color(0xff16202a),
-                label: 'Todo Api Page',
-                image: 'assets/api.png',
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              menuCard(
+                color: const Color(0xffb4763c),
+                label: 'Login Page',
+                image: 'assets/login.png',
                 onTap: () {
-                  Navigator.pushNamed(context, TodoPage.id);
+                  Navigator.pushNamed(context, LoginPage.id);
                 },
                 detailsButtonOnTap: () {
                   showDialog(
@@ -67,23 +38,54 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) {
                       return detailsDialog(
                           context: context,
-                          title: 'Todo List Page',
+                          title: 'Login Page',
                           subtitle:
-                              '1- Make todo list model\n2- Make todo list service\n3- Get todo list from api and display it\n4- Make circular progress indicator if todo list is empty\n5- Refactor code using bloc package');
+                              '1- Make a login Page with validators\n2-Navigate to another page\n3- Send email used to login to the same page\n4- Add firebase auth to project');
                     },
                   );
-                }),
-            const SizedBox(
-              height: 20,
-            ),
-            const Divider(
-              height: 10,
-              thickness: 2,
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-          ],
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              menuCard(
+                  color: const Color(0xff16202a),
+                  label: 'Todo Api Page',
+                  image: 'assets/api.png',
+                  onTap: () {
+                    Navigator.pushNamed(context, TodoPage.id);
+                  },
+                  detailsButtonOnTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return detailsDialog(
+                            context: context,
+                            title: 'Todo List Page',
+                            subtitle:
+                                '1- Make todo list model\n2- Make todo list service\n3- Get todo list from api and display it\n4- Make circular progress indicator if todo list is empty\n5- Refactor code using bloc package');
+                      },
+                    );
+                  }),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );
