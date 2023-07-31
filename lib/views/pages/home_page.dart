@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
                         context: context,
                         title: 'Login Page',
                         subtitle:
-                            '1- Make a login Page with validators\n2-Navigate to another page\n3- Send email used to login to the same page');
+                            '1- Make a login Page with validators\n2-Navigate to another page\n3- Send email used to login to the same page\n4- Add firebase auth to project');
                   },
                 );
               },
