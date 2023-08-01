@@ -13,3 +13,5 @@ abstract class LoginStates {}
 class LoginIntialState extends LoginStates {}
 
 class LoginPasswordVisibilityState extends LoginStates {}
+
+class LoginGetEmilState extends LoginStates {}

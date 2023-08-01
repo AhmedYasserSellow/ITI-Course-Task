@@ -30,8 +30,10 @@ class LoginCubit extends Cubit<LoginStates> {
   LoginCubit() : super(LoginIntialState());
   static LoginCubit get(context) => BlocProvider.of(context);
   bool isHidden = true;
+
   IconData obsecureIcon = Icons.visibility;
-  void signUp({
+  String? email;
+  Future signUp({
     required BuildContext context,
     required TextEditingController emailController,
     required TextEditingController passwordController,
@@ -59,7 +61,7 @@ class LoginCubit extends Cubit<LoginStates> {
     }
   }
 
-  void signIn(
+  Future signIn(
       {required BuildContext context,
       required TextEditingController emailController,
       required TextEditingController passwordController}) async {
@@ -114,5 +116,11 @@ class LoginCubit extends Cubit<LoginStates> {
     }
     isHidden = !isHidden;
     emit(LoginPasswordVisibilityState());
+  }
+
+  Future getEmail() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    email = prefs.getString('email')!;
+    emit(LoginGetEmilState());
   }
 }

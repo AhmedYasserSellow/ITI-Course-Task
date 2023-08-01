@@ -109,6 +109,7 @@ class LoginPage extends StatelessWidget {
                   defaultButton(
                     onTap: () {
                       if (formKey.currentState!.validate()) {
+                        LoginCubit.get(context).getEmail();
                         LoginCubit.get(context).signIn(
                             context: context,
                             emailController: emailController,
