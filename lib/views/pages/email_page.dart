@@ -14,7 +14,7 @@ class EmailPage extends StatelessWidget {
     return BlocBuilder<LoginCubit, LoginStates>(builder: (context, state) {
       return Scaffold(
         appBar: AppBar(
-          title: const Text('Home'),
+          title: const Text('Email Page'),
           centerTitle: true,
         ),
         body: Center(
