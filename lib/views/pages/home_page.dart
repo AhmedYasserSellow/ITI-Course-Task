@@ -1,18 +1,14 @@
 import 'package:app/views/components/details_dialog.dart';
 import 'package:app/views/components/menu_card.dart';
+import 'package:app/views/pages/firestore_page.dart';
 import 'package:app/views/pages/login_page.dart';
 import 'package:app/views/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
   static String id = 'HomePage';
 
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -74,6 +70,36 @@ class _HomePageState extends State<HomePage> {
                       },
                     );
                   }),
+              const SizedBox(
+                height: 20,
+              ),
+              const Divider(
+                height: 10,
+                thickness: 2,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              menuCard(
+                color: const Color.fromRGBO(255, 203, 41, 1),
+                image: 'assets/Firestore.png',
+                onTap: () {
+                  Navigator.pushNamed(context, FirestorePage.id);
+                },
+                label: 'Firestore Task',
+                detailsButtonOnTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return detailsDialog(
+                          context: context,
+                          title: 'Firestore Page',
+                          subtitle:
+                              '1- Add cloud firestore package to project\n2- Add some data to cloud firestore\n3- Opend read and write in cloud firestore\n4- Get data in page using strean builder');
+                    },
+                  );
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),

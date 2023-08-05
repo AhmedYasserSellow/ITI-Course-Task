@@ -1,3 +1,4 @@
+import 'package:app/views/pages/firestore_page.dart';
 import 'package:app/views/pages/home_page.dart';
 import 'package:app/views/pages/register_page.dart';
 import 'package:app/views/pages/todo_page.dart';
@@ -46,7 +47,8 @@ class MyApp extends StatelessWidget {
           EmailPage.id: (context) => const EmailPage(),
           TodoPage.id: (context) => const TodoPage(),
           HomePage.id: (context) => const HomePage(),
-          RegisterPage.id: (context) => RegisterPage()
+          RegisterPage.id: (context) => RegisterPage(),
+          FirestorePage.id: (context) => const FirestorePage()
         },
         initialRoute: HomePage.id,
         debugShowCheckedModeBanner: false,
