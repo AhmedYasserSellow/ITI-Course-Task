@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                 onTap: () {
                   Navigator.pushNamed(context, FirestorePage.id);
                 },
-                label: 'Firestore Task',
+                label: 'Firestore Page',
                 detailsButtonOnTap: () {
                   showDialog(
                     context: context,
